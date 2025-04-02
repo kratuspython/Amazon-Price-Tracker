@@ -3,6 +3,13 @@ from bs4 import BeautifulSoup
 import lxml
 import math
 import smtplib
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Access the environment variables
+variable_value = os.getenv("VARIABLE_NAME")
 
 headers = {
     'Accept-Language' : 'en-US',
@@ -20,8 +27,8 @@ price_list = price_tag[1].split("<")
 price = int(price_list[0])
 
 if price < 300:
-    my_email = 'yonelvynpython@gmail.com'
-    my_password = 'kzppbdfymcaswanu'
+    my_email = os.getenv("MY_EMAIL")
+    my_password = os.getenv("MY_PASSWORD")
     title = "Blink Outdoor wireless"
     with smtplib.SMTP("smtp.gmail.com") as offert_remainder:
         offert_remainder.starttls()
